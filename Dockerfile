@@ -12,5 +12,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code
 COPY . .
 
-# Run the application with arguments for the m3u file and output path
-CMD ["python", "video_downloader.py", "--input", "download.m3u", "--output", "/downloads"]
+# Environment variable to determine script (movies or series)
+ENV SCRIPT_TYPE "movies"
+
+# Run the appropriate script based on the SCRIPT_TYPE environment variable
+CMD ["/bin/sh", "-c", "if [ \"$SCRIPT_TYPE\" = \"movies\" ]; then python VOD-Downloader-movies.py --input download.m3u --output /downloads; else python VOD-Downloader-series.py --input download.m3u --output /downloads; fi"]

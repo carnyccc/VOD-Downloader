@@ -14,11 +14,11 @@ custom_user_agent = 'VLC/3.0.2.LibVLC/3.0.2'
 m3u_file = 'download.m3u'
 
 try:
-    # Lesen Sie den Inhalt der IPTV.m3u-Datei
+    # Lesen Sie den Inhalt der download.m3u-Datei
     with open(m3u_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 except FileNotFoundError:
-    print('Die Datei "dl.txt" wurde nicht gefunden.')
+    print('Die Datei "download.m3u" wurde nicht gefunden.')
     exit(1)
 
 # Initialisieren Sie Variablen für den Hauptordner, den Unterordner und den Dateinamen
