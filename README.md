@@ -27,7 +27,16 @@ the dependencies can be easily installed using the following command.
 
 This allows you to start the download via a Docker container. Simply enter download.m3u and the download folder as input for the container.
 
-    docker run --name vod-downloader \
+### Movie
+
+    docker run --name vod-downloader -e SCRIPT_TYPE=movies \
     -v /path/to/download.m3u:/app/download.m3u \
-    -v /path/to/download-location:/downloads \
+    -v /path/to/download:/downloads
+    carnyc/vod-downloader:latest
+
+### Series
+
+    docker run --name vod-downloader -e SCRIPT_TYPE=series \
+    -v /path/to/download.m3u:/app/download.m3u \
+    -v /path/to/download:/downloads
     carnyc/vod-downloader:latest
